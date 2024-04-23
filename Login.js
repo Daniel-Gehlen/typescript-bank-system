@@ -1,0 +1,41 @@
+// Login.js
+import React, { useState } from 'react';
+
+const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Perform password validation logic here
+    if (password !== 'correctpassword') {
+      setError('Invalid email or password');
+      return;
+    }
+    // Proceed with login if password is correct
+  };
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button type="submit">Login</button>
+      </form>
+      {error && <p>{error}</p>}
+    </div>
+  );
+};
+
+export default Login;
